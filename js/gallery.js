@@ -139,43 +139,4 @@ const images = [
       
       
       
-      /*function galleryMarkup = images
-      .map(({ preview, original, description }) => `
-          <li class="gallery-item">
-            <a class="gallery-link" href="${original}">
-              <img
-                class="gallery-image"
-                src="${preview}"
-                data-source="${original}"
-                alt="${description}"
-              />
-            </a>
-          </li>
-          `)
-
-       .join('');
-      
-      galleryContainer.innerHTML = galleryMarkup;
-      
        
-      galleryContainer.addEventListener('click', (event) => {
-        event.preventDefault();
-
-        if (event.target.nodeName !== 'IMG') return;
-        
-    const originalSrc = event.target.dataset.source;
-
-    const instance = basicLightbox.create(`
-         
-        <img src="${originalSrc}" alt="${event.target.alt}" />`);
-         
-        instance.show();
-
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      instance.close();
-           
-        }
-      });
-    });//
