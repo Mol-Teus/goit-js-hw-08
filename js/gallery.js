@@ -93,12 +93,12 @@ const images = [
 
         if (event.target.nodeName !== 'IMG') return;
         
-            const originalSrc = event.target.dataset.source;
+    const originalSrc = event.target.dataset.source;
 
-            const instance = basicLightbox.create(`
-                <img src="${originalSrc}" alt="${event.target.alt}" />
-                 `);
-
+    const instance = basicLightbox.create(`
+         
+        <img src="${originalSrc}" alt="${event.target.alt}" />`);
+         
         instance.show();
 
 
