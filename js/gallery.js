@@ -66,10 +66,80 @@ const images = [
       },
     ];
     
+    images.forEach((item, index) => {
+        item.id = index;
+      });
       
-      const galleryContainer = document.querySelector('.gallery');
-
-      const galleryMarkup = images
+      const container = document.querySelector('.gallery');
+      container.insertAdjacentHTML('beforeend', createGalery(images));
+      container.addEventListener('click', clickGaleryOpen);
+      
+      
+      function createGalery(arr) {
+        return arr
+          .map(
+            imageG =>
+              `<li class="gallery-item" data-id="${imageG.id}">
+              <a class="gallery-link" href="${imageG.original}">
+                <img
+                  class="gallery-image"
+                  src="${imageG.preview}"
+                  data-source="${imageG.original}"
+                  alt="${imageG.description}"
+                />
+              </a>
+            </li>`
+          )
+          .join('');
+      }
+      
+      function clickGaleryOpen(event) {
+        event.preventDefault();
+        if (event.target === event.currentTarget) {
+          return;
+        }
+      
+        const imageCurrent = event.target.closest('.gallery-item');
+        const id = imageCurrent.dataset.id;
+      
+        const imegGalerry = images.find(item => item.id === +id);
+      
+        const instance = basicLightbox.create(`
+          <div class="modal">
+            <img src="${imegGalerry.original}" alt="${imegGalerry.description}" />
+          </div>`);
+        instance.show();
+      }
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      /*function galleryMarkup = images
       .map(({ preview, original, description }) => `
           <li class="gallery-item">
             <a class="gallery-link" href="${original}">
@@ -108,4 +178,4 @@ const images = [
            
         }
       });
-    });
+    });//
